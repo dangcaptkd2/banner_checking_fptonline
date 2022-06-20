@@ -119,9 +119,9 @@ def get_flag(img_path, src='model_flag_5m_best.pt'):
 
 def get_weapon(img_path, src='model_weapon.pt'):
     print(">>>> running weapon model")
-    return run(source=img_path, weights=ROOT / src, imgsz=(320,320), conf_thres=0.8)
+    return run(source=img_path, weights=ROOT / src, imgsz=(320,320), conf_thres=0.9)
 
 def get_crypto(img_path, src='crypto_model.pt'):
     print(">>>> running crypto model")
-    return run(source=img_path, weights=ROOT / src, imgsz=(320,320), conf_thres=0.8)
+    return run(source=img_path, weights=ROOT / src, imgsz=(320,320), conf_thres=0.9)
 

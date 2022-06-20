@@ -130,7 +130,6 @@ dmypy.json
 
 
 /build
-/data
 /debugs
 /static
 *.pth
