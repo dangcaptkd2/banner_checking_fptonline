@@ -40,8 +40,9 @@ class RECOGNITION_VN():
             img_path = os.path.join(crop_folder, img_name)
             tmp, score = self.predict(img_path)
             print(">>> vn:", tmp, score)
-            id = int(img_name.split('.')[0])
-            result[id] = tmp
+            if score>0.7:
+                id = int(img_name.split('.')[0])
+                result[id] = tmp
 
         return result
 

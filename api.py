@@ -144,11 +144,13 @@ def procssesing_image(filename=None):
         start_reg_eng = time.time()
         recog = RECOGNITION()
         result_eng = recog.predict_arr(bib_list=list_arr, name=name)
-        print(">>>>> done recog ENG")
+        print(">>>>> done recog ENG", result_eng)
 
         english = []
+        threshold = 0.6
         for k in result_eng[name]:
-            english.append(result_eng[name][k][0])
+            if result_eng[name][k][1] >= threshold:
+                english.append(result_eng[name][k][0])
 
         del recog
         gc.collect()
@@ -158,18 +160,17 @@ def procssesing_image(filename=None):
         end_reg_eng = time.time()
         
         R['text'] = ' '.join(english)
-        R["ban keyword"] = banned_eng
-        R['time_reg_eng'] = round(end_reg_eng-start_reg_eng, 5)
-        
-        if len(banned_eng)>0:
-            R['Status'] = 'Block'
-            R['total_time'] = round(time.time()-start_time,5)
-            
-            return R
         #====================================#
         ####################################### VIETNAMESE TEXT RECOGNIZE MODULE
         start_reg_vn = time.time()
-        if check_is_vn(english):    # check if possible is Vietnamese
+        if not check_is_vn(english):    # check if possible is Vietnamese
+            R["ban keyword"] = banned_eng
+            R['time_reg_eng'] = round(end_reg_eng-start_reg_eng, 5)
+            if len(banned_eng)>0:
+                R['Status'] = 'Block'
+                R['total_time'] = round(time.time()-start_time,5)
+                return R
+        else:
             action_merge(sorted_cor, name, image_path)
             print(">>> text is vietnamese")
             result_vi = call_api_vi(name=name)
@@ -186,8 +187,6 @@ def procssesing_image(filename=None):
                 R['Status'] = 'Block'
                 R['total_time'] = round(time.time()-start_time,5)
                 return R
-        else:
-            print(">>> text is englist")
     R['total_time'] = round(time.time()-start_time,5)
     return R
 

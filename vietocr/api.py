@@ -17,7 +17,7 @@ def processing(name=None):
         return {"text_vn": "None"}
 
     vietnam = []
-    for k in range(len(result_vn)):
+    for k in result_vn:
         vietnam.append(result_vn[k])
         
     R = {"text_vn": ' '.join(vietnam)}
