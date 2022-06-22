@@ -144,7 +144,7 @@ def procssesing_image(filename=None):
         start_reg_eng = time.time()
         recog = RECOGNITION()
         result_eng = recog.predict_arr(bib_list=list_arr, name=name)
-        print(">>>>> done recog ENG", result_eng)
+        print(">>>>> done recog ENG")
 
         english = []
         threshold = 0.6
