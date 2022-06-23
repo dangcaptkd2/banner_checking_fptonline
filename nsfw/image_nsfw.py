@@ -63,9 +63,9 @@ def upload_check_ocr_url():
 		result["time_detect_weapon_in"] = round(time.time()-start, 5)
 
 		start = time.time()
-		# result_crypto = detect_crypto(img_path, draw=True)
-		# result['crypto'] = result_crypto
-		result['crypto'] = []
+		result_crypto = detect_crypto(img_path, draw=True)
+		result['crypto'] = result_crypto
+		# result['crypto'] = []
 		result["time_detect_crypto_in"] = round(time.time()-start, 5)
 		return result
 	return render_template("upload.html")

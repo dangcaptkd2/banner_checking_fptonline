@@ -121,7 +121,7 @@ def get_weapon(img_path, src='model_weapon.pt'):
     print(">>>> running weapon model")
     return run(source=img_path, weights=ROOT / src, imgsz=(320,320), conf_thres=0.99)
 
-def get_crypto(img_path, src='crypto_model.pt'):
+def get_crypto(img_path, src='model_crypto_new.pt'):
     print(">>>> running crypto model")
-    return run(source=img_path, weights=ROOT / src, imgsz=(320,320), conf_thres=0.99)
+    return run(source=img_path, weights=ROOT / src, imgsz=(320,320), conf_thres=0.5)
 

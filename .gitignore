@@ -132,6 +132,8 @@ dmypy.json
 /build
 /debugs
 /static
+/New folder
+/images
 *.pth
 *.pt
 *.tar
