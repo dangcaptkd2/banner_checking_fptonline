@@ -156,6 +156,9 @@ def procssesing_image(filename=None):
         gc.collect()
         torch.cuda.empty_cache()
 
+        if len(english)==0:
+            return R
+
         banned_eng = check_text_eng(' '.join(english))
         end_reg_eng = time.time()
         
